@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#e8b4b8"/>
+  <circle cx="300" cy="320" r="140" fill="#a85c46"/>
+  <rect x="140" y="480" width="320" height="260" rx="60" fill="#a85c46"/>
+  <text x="300" y="740" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#3a2e28">Jovana — PMU umetnica (placeholder)</text>
+</svg>
