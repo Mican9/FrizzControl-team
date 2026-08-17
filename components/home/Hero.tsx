@@ -12,13 +12,9 @@ export function Hero({ people }: { people: Staff[] }) {
         {copy.hero.subtitle}
       </p>
 
-      <div className="team-container mx-auto mt-8 flex max-w-5xl flex-row flex-nowrap items-center justify-center gap-6 overflow-x-auto px-2 sm:mt-12 sm:gap-8">
+      <div className="team-container mx-auto mt-8 flex max-w-5xl flex-nowrap items-start justify-start gap-4 overflow-x-auto px-2 sm:mt-12 sm:flex-wrap sm:justify-center sm:gap-6 sm:overflow-visible">
         {people.map((person) => (
-          <HeroStaffPhoto
-            key={person.slug}
-            person={person}
-            variant={person.homePhotoVariant ?? "small"}
-          />
+          <HeroStaffPhoto key={person.slug} person={person} />
         ))}
       </div>
     </section>
