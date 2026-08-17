@@ -2,44 +2,39 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Staff } from "@/lib/data/staff";
 
-export function HeroStaffPhoto({
-  person,
-  variant = "small",
-}: {
-  person: Staff;
-  variant?: "large" | "small";
-}) {
-  const isLarge = variant === "large";
-  const frameSize = isLarge
-    ? "w-[140px] h-[172px] sm:w-[180px] sm:h-[222px] md:w-[220px] md:h-[271px] lg:w-[260px] lg:h-[320px]"
-    : "w-[106px] h-[106px] sm:w-[123px] sm:h-[123px] md:w-[141px] md:h-[141px] lg:w-[176px] lg:h-[176px]";
-  const frameShape = isLarge ? "rounded-3xl" : "rounded-full";
-
+export function HeroStaffPhoto({ person }: { person: Staff }) {
   return (
     <Link
       href={`/tim/${person.slug}`}
-      className="group flex flex-col items-center gap-2 sm:gap-3"
+      className="group w-44 shrink-0 overflow-hidden rounded-2xl bg-black text-white shadow-lg sm:w-52 lg:w-56"
     >
-      <div
-        className={`overflow-hidden border-4 border-surface shadow-lg ring-2 ring-secondary/50 transition-transform group-hover:scale-105 ${frameShape} ${frameSize}`}
-      >
+      <div className="relative -mt-px overflow-hidden rounded-2xl transition-transform duration-300 group-hover:scale-105">
         <Image
           src={person.heroPhoto.src}
           alt={person.heroPhoto.alt}
           width={400}
           height={400}
-          priority={isLarge}
-          className="h-full w-full object-cover"
+          priority
+          className="h-[150px] w-full object-cover object-top sm:h-[180px] lg:h-[200px]"
           style={{
             objectPosition: person.heroPhoto.focalPosition ?? "center",
             transform: person.heroPhoto.zoom ? `scale(${person.heroPhoto.zoom})` : undefined,
           }}
         />
+        <div className="pointer-events-none absolute bottom-0 z-10 h-24 w-full bg-gradient-to-t from-black to-transparent" />
       </div>
-      <span className="text-sm font-bold text-foreground group-hover:text-primary sm:text-base">
-        {person.name}
-      </span>
-      <span className="text-xs text-muted sm:text-sm">{person.role}</span>
+      <div className="px-3 pb-3">
+        <p className="border-b border-gray-600 pb-3 pt-2 text-xs text-gray-200">
+          {person.shortBio}
+        </p>
+        <p className="mt-3 text-sm font-semibold">{person.name}</p>
+        <p className="bg-gradient-to-r from-[#8B5CF6] via-[#E0724A] to-[#9938CA] bg-clip-text text-xs font-medium text-transparent">
+          {person.role}
+        </p>
+        <p className="mt-2 text-xs font-medium text-gray-300 underline-offset-2 group-hover:underline">
+          Pogledaj profil
+        </p>
+      </div>
     </Link>
   );
 }

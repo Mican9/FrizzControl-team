@@ -32,4 +32,7 @@ export const copy = {
   cta: {
     instagram: "Instagram",
   },
+  theme: {
+    toggleLabel: "Promeni temu",
+  },
 } as const;
